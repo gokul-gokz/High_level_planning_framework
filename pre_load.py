@@ -17,6 +17,7 @@ def init(initiWorldState):
     global effects_plus
     effects_plus= PDDL_data['effects_plus']
     global effects_less
+    print effects_plus
     effects_less = PDDL_data['effects_less']
     global preconditions
     preconditions = PDDL_data['preconditions']
@@ -48,12 +49,15 @@ def init(initiWorldState):
     #p42- object 3
     #p44- object 9
     #p53- object 0
+    #p70- object 2
+    #p64- object 6
+    #p63- oobject 8
     #hl_end = set(['p44', 'p53', 'p37', 'p70', 'p42', 'p1', 'p16', 'p64', 'p39', 'p63'])
 
-    hl_end=set(['p53','p1'])
+    hl_end=set(['p39','p1','p63','p44'])
     hl_start = hl_start - hl_end
     print"Goal:"
-    print"Object 0 and Object 4 should be inside the bin"
+    print"Object 4, 7, 8, 9 should be inside the bin"
 
 if __name__ == '__main__':
     initWorldState = (154, 314, False, 263, 314, False, 372, 314, False, 481, 314, False, 590, 314, False, 669, 188, False, 808, 314, False, 917, 314, False, 1026, 314, False, 1135, 314, False, 1245, 314, False)

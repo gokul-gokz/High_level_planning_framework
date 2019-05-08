@@ -27,96 +27,13 @@ def table_cleaner():
 
     ## number of current bins and maximum bins
     ## one obj in
-    max_obj = 10;
+    max_obj = 8;
     column = 3
 
     pos_type = PositionType(2)
 
     all_pos = []
 
-    for i in range(max_obj+1):
-        # don't place anything in the middle, it's for the bin
-        if i == max_obj/2:
-            size = 60
-            x = desk_x + i * desk_w/(max_obj+1) + (desk_w/(max_obj+1)-size)/2
-            y = desk_y + desk_h / 3 + (desk_h/3-size)/2
-            all_pos.append(x)
-            all_pos.append(y)
-        elif i == 4 or i==3 or i==2:
-            size = 20
-            y_cell = random.randint(0, 2)
-            x_left = desk_x + i * desk_w / (max_obj + 1) + size
-            x_right = desk_x + (i + 1) * desk_w / (max_obj + 1) - size
-            y_top = desk_y + desk_h / 3 * y_cell + size
-            y_bottom = desk_y + desk_h / 3 * (y_cell + 1) - size
-            # print pos_type
-            pos_type = PositionType.bottom_line
-            if pos_type == PositionType.full_rand:
-                all_pos.append(random.randint(x_left, x_right))
-                all_pos.append(random.randint(y_top, y_bottom))
-            elif pos_type == PositionType.centered_random:
-                all_pos.append(x_left + ((x_right - x_left) / 2))
-                all_pos.append(y_top + ((y_bottom - y_top) / 2))
-            elif pos_type == PositionType.centered_static:
-                print "i havent made this one yet"
-            elif pos_type == PositionType.bottom_line:
-                all_pos.append(x_left + ((x_right - x_left) / 2))
-                all_pos.append(desk_y + desk_h - 30)
-        elif i <= 8 and i > 6:
-            size = 20
-            y_cell = random.randint(0, 2)
-            x_left = desk_x + i * desk_w / (max_obj + 1) + size
-            x_right = desk_x + (i + 1) * desk_w / (max_obj + 1) - size
-            y_top = desk_y + desk_h / 3 * y_cell + size
-            y_bottom = desk_y + desk_h / 3 * (y_cell + 1) - size
-            # print pos_type
-            pos_type = PositionType.bottom_line
-            if pos_type == PositionType.full_rand:
-                all_pos.append(random.randint(x_left, x_right))
-                all_pos.append(random.randint(y_top, y_bottom))
-            elif pos_type == PositionType.centered_random:
-                all_pos.append(x_left + ((x_right - x_left) / 2))
-                all_pos.append(y_top + ((y_bottom - y_top) / 2))
-            elif pos_type == PositionType.centered_static:
-                print "i havent made this one yet"
-            elif pos_type == PositionType.bottom_line:
-                all_pos.append(x_left + ((x_right - x_left) / 2))
-                all_pos.append(desk_y + desk_h - 30)
-        # elif i == 6:
-        #     size = 20
-        #     y_cell = random.randint(0, 2)
-        #     x_left = desk_x + i * desk_w / (max_obj + 1) + size
-        #     x_right = desk_x + (i + 1) * desk_w / (max_obj + 1) - size
-        #     y_top = desk_y + desk_h / 3 * y_cell + size
-        #     y_bottom = desk_y + desk_h / 3 * (y_cell + 1) - size
-        #     # print pos_type
-        #     all_pos.append(x_left + ((x_right - x_left) / 2+20))
-        #     all_pos.append(desk_y + 10)
-        else:
-            # pick up a cell first
-            size = 20
-            y_cell = random.randint(0, 2)
-            x_left = desk_x + i*desk_w/(max_obj+1) + size
-            x_right = desk_x + (i+1)*desk_w/(max_obj+1) - size
-            y_top = desk_y + desk_h/3 * y_cell+size
-            y_bottom = desk_y + desk_h/3 * (y_cell+1)-size
-            #print pos_type
-            pos_type = PositionType.centered_random
-            if pos_type == PositionType.full_rand:
-                all_pos.append(random.randint(x_left, x_right))
-                all_pos.append(random.randint(y_top, y_bottom))
-            elif pos_type == PositionType.centered_random:
-                if y_cell == 0:
-                    y_top += 50
-                all_pos.append(x_left+((x_right - x_left)/2))
-                all_pos.append(y_top+((y_bottom - y_top)/2))
-            elif pos_type == PositionType.centered_static:
-                print "i havent made this one yet"
-            elif pos_type == PositionType.bottom_line:
-                all_pos.append(x_left+((x_right - x_left)/2))
-                all_pos.append(desk_y + desk_h - 30)
-
-        all_pos.append(False)
     # a special case
     #all_pos = [154, 314, False, 263, 314, False, 372, 314, False, 481, 314, False, 590, 314, False, 669, 188, False, 808, 314, False, 917, 314, False, 1026, 314, False, 1135, 314, False, 1245, 314, False]
     all_pos = [170, 301, False,
@@ -148,7 +65,7 @@ if __name__ == '__main__':
     running = True
 
     initWorldState = table_cleaner()
-
+    print initWorldState
     pre_load.init(initWorldState)
 
     optionT = OptionThread(10, 'Thread for input options')
